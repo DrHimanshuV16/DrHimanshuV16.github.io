@@ -149,12 +149,44 @@ h1{
   background:var(--surface-2)
 }
 .band{margin:0 0 36px}
-.canvas-box{
+/* ---------- IoHT end-to-end diagram ---------- */
+.diagram{
   position:relative;border:1px solid var(--rule);border-radius:3px;
-  background:var(--surface);box-shadow:var(--shadow);overflow:hidden;
-  height:clamp(190px,24vw,244px);
+  background:var(--surface);box-shadow:var(--shadow);
+  overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;
 }
-canvas{display:block;width:100%;height:100%}
+.diagram svg{display:block;width:100%;min-width:940px;height:auto}
+.ioht text{dominant-baseline:auto}
+.ioht .tier{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;fill:var(--ink-3)}
+.ioht .tier-n{fill:var(--accent)}
+.ioht .lbl{font-family:var(--f-mono);font-size:13px;letter-spacing:.02em;fill:var(--ink)}
+.ioht .sub{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.03em;fill:var(--ink-3)}
+.ioht .cap{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;fill:var(--ink-3)}
+.ioht .capa{fill:var(--accent)}
+.ioht .caps{fill:var(--signal)}
+.ioht .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;fill:var(--ink-3)}
+.ioht .v{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.02em;fill:var(--ink-2)}
+.ioht .card{fill:var(--surface);stroke:var(--rule);stroke-width:1}
+.ioht .wash{fill:var(--accent-wash)}
+.ioht .box{fill:none;stroke:var(--rule);stroke-width:1;stroke-dasharray:2 4}
+.ioht .glyph{fill:none;stroke:var(--accent);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.ioht .fig{fill:var(--accent);fill-opacity:.14;stroke:var(--accent);stroke-width:1.5}
+.ioht .link{fill:none;stroke:var(--rule);stroke-width:1.2}
+.ioht .conn{fill:none;stroke:var(--accent);stroke-width:1.2;opacity:.34}
+.ioht .flow{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:3 7;animation:ioflow 1.1s linear infinite}
+.ioht .flow.slow{stroke:var(--signal);animation-duration:3.6s}
+.ioht .back{fill:none;stroke:var(--signal);stroke-width:1.4;stroke-dasharray:3 7;opacity:.85;animation:ioback 1.7s linear infinite}
+.ioht .node{fill:var(--accent)}
+.ioht .hot{fill:var(--signal)}
+.ioht .halo{fill:var(--signal);opacity:.16;animation:iopulse 2.4s ease-in-out infinite}
+.ioht .tick{fill:var(--accent)}
+.ioht .chipbg{fill:var(--surface)}
+@keyframes ioflow{to{stroke-dashoffset:-20}}
+@keyframes ioback{to{stroke-dashoffset:20}}
+@keyframes iopulse{0%,100%{opacity:.10;r:12}50%{opacity:.28;r:18}}
+@media (prefers-reduced-motion: reduce){
+  .ioht .flow,.ioht .back,.ioht .halo{animation:none}
+}
 .figcap{
   font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-3);
   margin-top:10px;line-height:1.6;max-width:78ch
@@ -357,8 +389,139 @@ footer{padding-block:34px 44px;color:var(--ink-3);font-family:var(--f-mono);font
   </div>
 
   <figure class="figure band">
-    <div class="canvas-box"><canvas id="dodag" aria-hidden="true"></canvas></div>
-  <figcaption class="figcap">6LoWPAN-RPL destination-oriented directed acyclic graph. Motes forward patient telemetry hop-by-hop to the border router; amber marks a node under buffer pressure — the congestion condition this research models and mitigates.</figcaption>
+    <div class="diagram">
+<svg class="ioht" viewBox="0 0 1280 496" role="img" aria-labelledby="iohtT iohtD" preserveAspectRatio="xMidYMid meet">
+<title id="iohtT">End-to-end patient-centric Internet of Healthcare Things</title>
+<desc id="iohtD">Four tiers, left to right. Perception: a patient wearing ECG, pulse-oximetry, glucose and motion sensors on a body-area network. Network edge: home, ambulance and ward gateways feeding a 6LoWPAN-RPL routing tree up to a border router, with one node under buffer pressure marked amber. Fog and cloud: an edge node doing stream triage, and a cloud electronic health record. Care delivery: clinician, rapid response, caregiver and pharmacy. A closed loop returns from care delivery to the patient as alerts, titration and care-plan change.</desc>
+<defs>
+<marker id="ioar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/></marker>
+<marker id="iosg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--signal)"/></marker>
+</defs>
+
+<!-- tier headers -->
+<text class="tier" x="30" y="28"><tspan class="tier-n">01</tspan> · PATIENT</text>
+<text class="tier" x="348" y="28"><tspan class="tier-n">02</tspan> · NETWORK EDGE</text>
+<text class="tier" x="768" y="28"><tspan class="tier-n">03</tspan> · FOG + CLOUD</text>
+<text class="tier" x="1062" y="28"><tspan class="tier-n">04</tspan> · CARE DELIVERY</text>
+<text class="cap capa" x="700" y="28" text-anchor="end">&#8592; this research</text>
+<path class="link" d="M30 40 H280"/>
+<path d="M348 40 H700" stroke="var(--accent)" stroke-width="1.6" fill="none"/>
+<path class="link" d="M768 40 H1000"/>
+<path class="link" d="M1062 40 H1250"/>
+
+<!-- 01 patient and body-area network -->
+<circle class="wash" cx="155" cy="180" r="92"/>
+<circle class="fig" cx="155" cy="120" r="16"/>
+<path class="fig" d="M155 140 c-25 0 -39 15 -43 38 l-7 54 a6 6 0 0 0 6 7 h88 a6 6 0 0 0 6 -7 l-7 -54 c-4 -23 -18 -38 -43 -38 z"/>
+<path class="link" d="M132 168 H96"/><circle class="node" cx="136" cy="168" r="3.4"/>
+<text class="cap" x="90" y="172" text-anchor="end">ECG</text>
+<path class="link" d="M130 205 H96"/><circle class="node" cx="134" cy="205" r="3.4"/>
+<text class="cap" x="90" y="209" text-anchor="end">SpO&#8322;</text>
+<path class="link" d="M180 186 H214"/><circle class="node" cx="176" cy="186" r="3.4"/>
+<text class="cap" x="220" y="190">GLUCOSE</text>
+<path class="link" d="M178 222 H214"/><circle class="node" cx="174" cy="222" r="3.4"/>
+<text class="cap" x="220" y="226">MOTION</text>
+
+<!-- 01 to 02 -->
+<path class="conn" d="M290 180 H336" marker-end="url(#ioar)"/>
+<path class="flow" d="M290 180 H330"/>
+<text class="cap" x="313" y="168" text-anchor="middle">telemetry</text>
+
+<!-- 02 care environments -->
+<rect class="card" x="360" y="78" width="128" height="54" rx="3"/>
+<path class="glyph" d="M371 107 L382 98 L393 107 M374 105 V117 H390 V105"/>
+<text class="lbl" x="400" y="102">HOME</text><text class="sub" x="400" y="118">gateway</text>
+<rect class="card" x="360" y="152" width="128" height="54" rx="3"/>
+<path class="glyph" d="M370 182 h16 v-12 h-16 z M386 182 h8 v-7 l-4 -5 h-4 z M375 174 h6 M378 171 v6"/>
+<circle class="glyph" cx="376" cy="185" r="2.4"/><circle class="glyph" cx="390" cy="185" r="2.4"/>
+<text class="lbl" x="400" y="176">AMBULANCE</text><text class="sub" x="400" y="192">LTE uplink</text>
+<rect class="card" x="360" y="226" width="128" height="54" rx="3"/>
+<path class="glyph" d="M370 248 V266 M370 260 H392 M392 260 V266 M374 254 h7 M384 250 v8"/>
+<text class="lbl" x="400" y="250">WARD / ICU</text><text class="sub" x="400" y="266">bedside</text>
+
+<!-- 02 6LoWPAN-RPL mesh -->
+<rect class="box" x="502" y="72" width="210" height="232" rx="4"/>
+<text class="sub" x="502" y="64">RPL DODAG · multi-hop mesh</text>
+<path class="conn" d="M488 105 H522"/><path class="flow" d="M488 105 H522"/>
+<path class="conn" d="M488 179 H522"/><path class="flow" d="M488 179 H522"/>
+<path class="conn" d="M488 253 H522"/><path class="flow" d="M488 253 H522"/>
+<path class="link" d="M526 105 L592 142 M526 179 L592 142 M526 179 L592 216 M526 253 L592 216 M592 142 L638 179 M592 216 L638 179 M638 179 H654"/>
+<path class="flow" d="M526 105 L592 142"/>
+<path class="flow" d="M526 179 L592 142"/>
+<path class="flow" d="M526 253 L592 216"/>
+<path class="flow slow" d="M592 216 L638 179"/>
+<path class="flow" d="M592 142 L638 179"/>
+<path class="flow" d="M638 179 H654"/>
+<circle class="halo" cx="592" cy="216" r="12"/>
+<circle class="node" cx="526" cy="105" r="4.5"/><circle class="node" cx="526" cy="179" r="4.5"/><circle class="node" cx="526" cy="253" r="4.5"/>
+<circle class="node" cx="592" cy="142" r="4.5"/><circle class="hot" cx="592" cy="216" r="5.2"/>
+<circle class="node" cx="638" cy="179" r="4.5"/>
+<rect class="node" x="658" y="173" width="13" height="13"/>
+<text class="sub" x="664" y="204" text-anchor="middle">BORDER ROUTER</text>
+
+<!-- 02 to 03 -->
+<path class="conn" d="M722 179 H756" marker-end="url(#ioar)"/>
+<path class="flow" d="M722 179 H750"/>
+<text class="cap" x="740" y="166" text-anchor="middle">CoAP</text>
+
+<!-- 03 fog and cloud -->
+<rect class="card" x="768" y="72" width="232" height="96" rx="3"/>
+<text class="lbl" x="784" y="96">FOG / EDGE NODE</text>
+<text class="sub" x="784" y="120">· stream triage &lt; 1 s</text>
+<text class="sub" x="784" y="138">· anomaly detection</text>
+<text class="sub" x="784" y="156">· store &amp; forward on loss</text>
+<path class="conn" d="M884 168 V196" marker-end="url(#ioar)"/>
+<path class="flow" d="M884 168 V192"/>
+<rect class="card" x="768" y="204" width="232" height="96" rx="3"/>
+<text class="lbl" x="784" y="228">CLOUD · EHR</text>
+<text class="sub" x="784" y="252">· longitudinal record</text>
+<text class="sub" x="784" y="270">· risk models, cohorts</text>
+<text class="sub" x="784" y="288">· clinician + research API</text>
+
+<!-- 03 to 04 -->
+<path class="conn" d="M1008 179 H1050" marker-end="url(#ioar)"/>
+<path class="flow" d="M1008 179 H1044"/>
+<text class="cap" x="1029" y="166" text-anchor="middle">alerts</text>
+
+<!-- 04 care delivery -->
+<rect class="card" x="1062" y="72" width="188" height="48" rx="3"/><rect class="tick" x="1062" y="72" width="2.5" height="48"/>
+<text class="lbl" x="1076" y="94">CLINICIAN</text><text class="sub" x="1076" y="110">dashboard · triage</text>
+<rect class="card" x="1062" y="132" width="188" height="48" rx="3"/><rect class="tick" x="1062" y="132" width="2.5" height="48"/>
+<text class="lbl" x="1076" y="154">RAPID RESPONSE</text><text class="sub" x="1076" y="170">ICU escalation</text>
+<rect class="card" x="1062" y="192" width="188" height="48" rx="3"/><rect class="tick" x="1062" y="192" width="2.5" height="48"/>
+<text class="lbl" x="1076" y="214">CAREGIVER</text><text class="sub" x="1076" y="230">family · consent</text>
+<rect class="card" x="1062" y="252" width="188" height="48" rx="3"/><rect class="tick" x="1062" y="252" width="2.5" height="48"/>
+<text class="lbl" x="1076" y="274">PHARMACY</text><text class="sub" x="1076" y="290">device Rx · dosing</text>
+
+<!-- column captions -->
+<text class="cap capa" x="155" y="328" text-anchor="middle">BODY-AREA NETWORK</text>
+<text class="cap" x="155" y="344" text-anchor="middle">BLE 5 · IEEE 802.15.4</text>
+<text class="cap capa" x="524" y="328" text-anchor="middle">6LoWPAN-RPL DODAG</text>
+<circle class="hot" cx="385" cy="340" r="3.6"/>
+<text class="cap" x="396" y="344">amber = buffer pressure, where loss begins</text>
+<text class="cap capa" x="884" y="328" text-anchor="middle">EDGE-FIRST PROCESSING</text>
+<text class="cap" x="884" y="344" text-anchor="middle">alarms never leave the ward</text>
+<text class="cap capa" x="1156" y="328" text-anchor="middle">ROLE-BASED ROUTING</text>
+<text class="cap" x="1156" y="344" text-anchor="middle">ranked by acuity</text>
+
+<!-- closed loop back to the patient -->
+<path class="back" d="M1244 300 V380 Q1244 394 1230 394 H44 Q30 394 30 380 V200 Q30 186 44 186 H54" marker-end="url(#iosg)"/>
+<rect class="chipbg" x="400" y="384" width="480" height="20"/>
+<text class="cap caps" x="640" y="398" text-anchor="middle">CLOSED LOOP · alert &#8594; decision &#8594; titration &#8594; back to the patient</text>
+
+<!-- cross-cutting constraints -->
+<path class="link" d="M30 430 H1250"/>
+<rect class="tick" x="30" y="442" width="2.5" height="28"/>
+<text class="k" x="42" y="453">LATENCY</text><text class="v" x="42" y="469">&lt; 2 s end-to-end for critical alarms</text>
+<rect class="tick" x="340" y="442" width="2.5" height="28"/>
+<text class="k" x="352" y="453">SECURITY</text><text class="v" x="352" y="469">DTLS · device identity · consent</text>
+<rect class="tick" x="650" y="442" width="2.5" height="28"/>
+<text class="k" x="662" y="453">ENERGY</text><text class="v" x="662" y="469">coin-cell motes, years not months</text>
+<rect class="tick" x="960" y="442" width="2.5" height="28"/>
+<text class="k" x="972" y="453">RESILIENCE</text><text class="v" x="972" y="469">store-and-forward through loss</text>
+</svg>
+    </div>
+  <figcaption class="figcap">Patient-centric IoHT, end to end. Body-worn and implanted sensors feed gateways in the home, the ambulance and the ward; a 6LoWPAN-RPL routing tree carries that telemetry multi-hop to the border router, where amber marks a node under buffer pressure &#8212; the congestion condition this research models and mitigates. Edge triage keeps latency-critical alarms local; the cloud holds the longitudinal record. The loop closes back on the patient through the care team.</figcaption>
   </figure>
 
   <div class="metrics">
@@ -733,152 +896,6 @@ filtEl.addEventListener('click', e => {
 });
 render();
 
-/* ---------------------------------------------------------------------------
-   RPL DODAG motif: motes forward telemetry up the routing tree to the border
-   router; a node under buffer pressure warms toward the signal colour.
-   ------------------------------------------------------------------------- */
-(function(){
-  const cv = document.getElementById('dodag');
-  if (!cv) return;
-  const ctx = cv.getContext('2d');
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-  // normalized topology: root at top, three tiers of motes beneath
-  const N = [
-    {x:.50, y:.13, r:0, root:true},
-    {x:.24, y:.36, r:0}, {x:.52, y:.38, r:0}, {x:.79, y:.34, r:0},
-    {x:.12, y:.62, r:1}, {x:.33, y:.60, r:1}, {x:.46, y:.64, r:2},
-    {x:.64, y:.61, r:2}, {x:.83, y:.60, r:3}, {x:.95, y:.40, r:3},
-    {x:.07, y:.87, r:4}, {x:.26, y:.86, r:5}, {x:.42, y:.88, r:6},
-    {x:.60, y:.87, r:7}, {x:.78, y:.85, r:8}, {x:.93, y:.80, r:8}
-  ];
-  N.forEach((n,i) => { if (i > 0 && n.r === 0) n.r = 0; n.load = 0; n.i = i; });
-  const EDGES = N.map((n,i) => i === 0 ? null : {c:i, p:n.r}).filter(Boolean);
-
-  let col = {};
-  function readColors(){
-    const cs = getComputedStyle(document.documentElement);
-    col = {
-      accent: cs.getPropertyValue('--accent').trim(),
-      signal: cs.getPropertyValue('--signal').trim(),
-      rule:   cs.getPropertyValue('--rule').trim(),
-      ink3:   cs.getPropertyValue('--ink-3').trim(),
-      surf:   cs.getPropertyValue('--surface').trim()
-    };
-  }
-  readColors();
-  reduce.addEventListener?.('change', () => location.reload());
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', readColors);
-  new MutationObserver(readColors).observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']});
-
-  let W = 0, H = 0, PAD = 26;
-  function size(){
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const b = cv.getBoundingClientRect();
-    W = b.width; H = b.height;
-    cv.width = Math.round(W * dpr);
-    cv.height = Math.round(H * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-  size();
-  new ResizeObserver(size).observe(cv);
-
-  const DW = () => Math.min(W - PAD * 2, (H - PAD * 2) * 4.2);
-  const px = n => (W - DW()) / 2 + n.x * DW();
-  const py = n => PAD + n.y * (H - PAD * 2);
-
-  const packets = EDGES.map((e, i) => ({e, t: (i * 0.137) % 1, v: 0.10 + (i % 5) * 0.022}));
-  let hot = 5, hotT = 0;
-
-  function mix(a, b, t){
-    // both tokens are hex; blend in sRGB
-    const p = h => { h = h.replace('#',''); if (h.length === 3) h = h.split('').map(c=>c+c).join('');
-      return [parseInt(h.slice(0,2),16), parseInt(h.slice(2,4),16), parseInt(h.slice(4,6),16)]; };
-    try{
-      const A = p(a), B = p(b);
-      return 'rgb(' + A.map((v,i) => Math.round(v + (B[i]-v)*t)).join(',') + ')';
-    }catch(e){ return a; }
-  }
-
-  function draw(dt){
-    ctx.clearRect(0, 0, W, H);
-
-    // edges
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = col.rule;
-    EDGES.forEach(e => {
-      ctx.beginPath();
-      ctx.moveTo(px(N[e.c]), py(N[e.c]));
-      ctx.lineTo(px(N[e.p]), py(N[e.p]));
-      ctx.stroke();
-    });
-
-    // packets
-    packets.forEach(pk => {
-      const c = N[pk.e.c], p = N[pk.e.p];
-      const x = px(c) + (px(p) - px(c)) * pk.t;
-      const y = py(c) + (py(p) - py(c)) * pk.t;
-      ctx.fillStyle = mix(col.accent, col.signal, N[pk.e.c].load);
-      ctx.globalAlpha = .85;
-      ctx.beginPath();
-      ctx.arc(x, y, 2.1, 0, 6.2832);
-      ctx.fill();
-      ctx.globalAlpha = 1;
-      if (dt) { pk.t += pk.v * dt; if (pk.t > 1) pk.t = 0; }
-    });
-
-    // nodes
-    N.forEach((n, i) => {
-      const X = px(n), Y = py(n);
-      const c = mix(col.accent, col.signal, n.load);
-      if (n.load > 0.05){
-        ctx.fillStyle = c;
-        ctx.globalAlpha = 0.14 * n.load;
-        ctx.beginPath();
-        ctx.arc(X, Y, 9 + 7 * n.load, 0, 6.2832);
-        ctx.fill();
-        ctx.globalAlpha = 1;
-      }
-      if (n.root){
-        ctx.fillStyle = col.accent;
-        ctx.fillRect(X - 5.5, Y - 5.5, 11, 11);
-        ctx.strokeStyle = col.surf; ctx.lineWidth = 1.5;
-        ctx.strokeRect(X - 5.5, Y - 5.5, 11, 11);
-      } else {
-        ctx.fillStyle = c;
-        ctx.beginPath();
-        ctx.arc(X, Y, 4, 0, 6.2832);
-        ctx.fill();
-      }
-    });
-
-    // root label
-    ctx.fillStyle = col.ink3;
-    ctx.font = '500 9.5px ui-monospace, "IBM Plex Mono", monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText('BORDER ROUTER', px(N[0]), py(N[0]) - 13);
-  }
-
-  if (reduce.matches){
-    N[5].load = 0.8;
-    draw(0);
-    new ResizeObserver(() => draw(0)).observe(cv);
-  } else {
-    let last = performance.now();
-    (function loop(now){
-      const dt = Math.min((now - last) / 1000, 0.05);
-      last = now;
-      hotT += dt;
-      if (hotT > 5.5){ hotT = 0; hot = 1 + Math.floor(Math.random() * (N.length - 1)); }
-      N.forEach((n, i) => {
-        const target = (i === hot && hotT < 3.4) ? 1 : 0;
-        n.load += (target - n.load) * Math.min(dt * 1.1, 1);
-      });
-      draw(dt);
-      requestAnimationFrame(loop);
-    })(performance.now());
-  }
-})();
 </script>
 
 </body>
