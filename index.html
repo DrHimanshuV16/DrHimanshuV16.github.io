@@ -442,11 +442,7 @@ main section:nth-of-type(7) .snum{color:var(--c1)}
 .theme p em{color:var(--tc);font-style:italic;font-weight:600}
 
 /* publications */
-.pub .au .me{
-  color:var(--ink);font-weight:700;border-bottom:0;padding:0 2px;border-radius:2px;
-  background-image:linear-gradient(to top,color-mix(in srgb,var(--c1) 38%,transparent) 42%,transparent 42%);
-  background-repeat:no-repeat
-}
+.pub .au .me{color:var(--c1);font-weight:700;border-bottom:0;background:none}
 .pub .ve em{color:var(--c2);font-style:italic;font-weight:600}
 .chip.k1{background:color-mix(in srgb,var(--c1) 15%,transparent);color:var(--c1)}
 .chip.k2{background:color-mix(in srgb,var(--c2) 15%,transparent);color:var(--c2)}
@@ -484,14 +480,11 @@ main section:nth-of-type(7) .snum{color:var(--c1)}
 .cols .col:nth-child(3) h3{color:var(--c4)}
 
 /* ---------- emphasis ----------
-   .hl paints a highlighter sweep behind the words; .kw colours them.
+   Both colour the words rather than sitting them on a tint: .hl is the
+   heavier of the two, .kw the lighter.
    Add v2..v6 to switch hue: <span class="hl v3">…</span>          */
-.hl{
-  --hc:var(--c1);font-weight:600;color:var(--ink);
-  background-image:linear-gradient(to top,color-mix(in srgb,var(--hc) 40%,transparent) 48%,transparent 48%);
-  background-repeat:no-repeat;padding:0 3px;margin:0 -2px;border-radius:2px
-}
-.kw{--hc:var(--c1);font-weight:600;color:var(--hc)}
+.hl{--hc:var(--c1);color:var(--hc);font-weight:700}
+.kw{--hc:var(--c1);color:var(--hc);font-weight:600}
 .hl.v2,.kw.v2{--hc:var(--c2)}
 .hl.v3,.kw.v3{--hc:var(--c3)}
 .hl.v4,.kw.v4{--hc:var(--c4)}
