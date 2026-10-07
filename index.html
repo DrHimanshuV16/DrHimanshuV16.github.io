@@ -602,9 +602,9 @@ footer{padding-block:34px 48px;color:var(--ink-3);font-size:12.5px;letter-spacin
 
   <div class="metrics">
     <div class="metric"><span class="n">7</span><span class="l">h-index</span></div>
-    <div class="metric"><span class="n">280</span><span class="l">Citations</span></div>
+    <div class="metric"><span class="n">296</span><span class="l">Citations</span></div>
     <div class="metric"><span class="n">35</span><span class="l">Cumulative IF</span></div>
-    <div class="metric"><span class="n">21</span><span class="l">Publications</span></div>
+    <div class="metric"><span class="n">22</span><span class="l">Publications</span></div>
     <div class="metric"><span class="n">3</span><span class="l">Design patents</span></div>
     <div class="metric"><span class="n">15</span><span class="l">Years experience</span></div>
   </div>
@@ -788,7 +788,7 @@ footer{padding-block:34px 48px;color:var(--ink-3);font-size:12.5px;letter-spacin
 
   <section id="publications">
     <div class="shead"><span class="snum">02</span><h2>Publications</h2><span class="count" id="pubcount"></span></div>
-    <p class="lede"><span class="hl v4">21 published items</span> — <span class="kw v4">6 journal articles</span> (<span class="kw v6">5 SCI-indexed</span>), 4 book chapters and <span class="kw v2">11 Scopus-indexed</span> conference papers — plus 3 journal manuscripts under review.</p>
+    <p class="lede"><span class="hl v4" id="n-pub">22 published items</span> — <span class="kw v4" id="n-jour">6 journal articles</span> (<span class="kw v6" id="n-sci">5 SCI-indexed</span>), <span id="n-chap">4 book chapters</span> and <span id="n-conf">12 conference papers</span> (<span class="kw v2" id="n-scopus">11 Scopus-indexed</span>) — plus <span id="n-rev">3 journal manuscripts</span> under review.</p>
     <div class="filters" id="filters" role="group" aria-label="Filter publications by type"></div>
     <ol class="publist" id="publist"></ol>
   </section>
@@ -957,7 +957,7 @@ footer{padding-block:34px 48px;color:var(--ink-3);font-size:12.5px;letter-spacin
 
   <footer>
     Compiled from curriculum vitae · September 2026<br>
-    Citation metrics as reported on the CV; see Google Scholar for current figures.
+    Citations, h-index and publications synced weekly from <a href="https://scholar.google.com/citations?user=MD55-F8AAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a> · last updated <span id="scholar-date">7 October 2026</span>
   </footer>
 </main>
 
@@ -979,7 +979,7 @@ footer{padding-block:34px 48px;color:var(--ink-3);font-size:12.5px;letter-spacin
    ========================================================================== */
 const PUBS = [
   { type:'journal', year:2024, title:'Reduced-lead ECG multi-label classification with higher generalization using 2D SE-ResNets with self-attention',
-    au:'D. Sheikh, *H. Verma*, N. Chauhan', ve:'<em>Multimedia Tools and Applications</em>, Springer',
+    au:'D. Sheikh, *H. Verma*, N. Chauhan', ve:'<em>Multimedia Tools and Applications</em>, Springer, vol. 83, no. 24, pp. 65315–65339',
     tags:['SCI','Q1','IF 3.0'], doi:'https://doi.org/10.1007/s11042-024-18116-z' },
 
   { type:'journal', year:2024, title:'Enhanced hybrid congestion mitigation strategy for 6LoWPAN-RPL based patient-centric IoHT',
@@ -987,11 +987,11 @@ const PUBS = [
     tags:['SCI','Q1','IF 4.4'], doi:'https://doi.org/10.1016/j.comnet.2024.110862' },
 
   { type:'journal', year:2023, title:'A comprehensive review of Internet of Healthcare Things: networking aspects, technologies, services, applications, challenges and security concerns',
-    au:'*H. Verma*, N. Chauhan, L. K. Awasthi', ve:'<em>Computer Science Review</em>, Elsevier, art. 100591',
+    au:'*H. Verma*, N. Chauhan, L. K. Awasthi', ve:'<em>Computer Science Review</em>, Elsevier, vol. 50, art. 100591',
     tags:['SCI','Q1','IF 13.3'], doi:'https://doi.org/10.1016/j.cosrev.2023.100591' },
 
   { type:'journal', year:2023, title:'Modelling buffer-overflow in 6LoWPAN-based resource-constraint IoT-healthcare network',
-    au:'*H. Verma*, N. Chauhan, L. K. Awasthi', ve:'<em>Wireless Personal Communications</em>, Springer',
+    au:'*H. Verma*, N. Chauhan, L. K. Awasthi', ve:'<em>Wireless Personal Communications</em>, Springer, vol. 129, no. 2, pp. 1113–1128',
     tags:['SCI','Q2','IF 1.9'], doi:'https://doi.org/10.1007/s11277-023-10178-w' },
 
   { type:'journal', year:2022, title:'Buffer-loss estimation to address congestion in 6LoWPAN based resource-restricted Internet of Healthcare Things network',
@@ -1005,15 +1005,21 @@ const PUBS = [
     au:'*H. Verma*', ve:'in <em>Blockchain and Digital Twins for Smart Healthcare</em>, T. A. Nguyen (Ed.), Elsevier, pp. 161–178',
     tags:['Sole author'], doi:'https://doi.org/10.1016/B978-0-443-30300-5.00011-7' },
 
-  { type:'chapter', year:2025, title:'Exploring the efficacy of machine learning models in predicting heart disease: a comparative study',
-    au:'C. Gulati, A. Chaudhary, *H. Verma*, R. Mohana', ve:'in <em>Intelligent Systems Using Semiconductors for Robotics and IoT</em>, CRC Press', tags:[] },
+  { type:'chapter', year:2026, title:'Exploring the efficacy of machine learning models in predicting heart disease: a comparative study',
+    au:'C. Gulati, A. Chaudhary, *H. Verma*, R. Mohana', ve:'in <em>Intelligent Systems Using Semiconductors for Robotics and IoT</em>, CRC Press, pp. 328–333',
+    tags:[], doi:'https://doi.org/10.1201/9781003716389-51' },
 
-  { type:'chapter', year:2025, title:'AI-driven personalized shopping assistance for customized retail experiences',
-    au:'D. Sehgal, C. Khurana, *H. Verma*, R. Mohana', ve:'in <em>Intelligent Systems Using Semiconductors for Robotics and IoT</em>, CRC Press', tags:[] },
+  { type:'chapter', year:2026, title:'AI-driven personalized shopping assistance for customized retail experiences',
+    au:'D. Sehgal, C. Khurana, *H. Verma*, R. Mohana', ve:'in <em>Intelligent Systems Using Semiconductors for Robotics and IoT</em>, CRC Press, pp. 375–381',
+    tags:[], doi:'https://doi.org/10.1201/9781003716389-59' },
 
   { type:'chapter', year:2023, title:'Task offloading using queuing theory in fog-assisted IoMT',
     au:'N. Kumar, *H. Verma*, N. Chauhan, L. K. Awasthi', ve:'in <em>ICTCS 2022: Intelligent Strategies for ICT</em>, Springer Nature Singapore, pp. 637–647',
     tags:[], doi:'https://doi.org/10.1007/978-981-19-9304-6_57' },
+
+  { type:'conference', year:2025, title:'Optimizing telecom churn forecasting using XGBoost and LightGBM with data balancing and feature refinement',
+    au:'S. Tiwari, L. Gupta, *H. Verma*', ve:'Int. Conf. on Next-Generation Networks and Deployable Artificial Intelligence, Springer Nature Switzerland, pp. 302–315',
+    tags:[], doi:'https://doi.org/10.1007/978-3-032-15398-2_23' },
 
   { type:'conference', year:2024, title:'Comparative analysis of machine learning models for the detection of diabetic retinopathy: a performance evaluation',
     au:'Deepali, Y. Singh, K. Kaur, *H. Verma*, R. Mohana', ve:'8th Int. Conf. on Parallel, Distributed and Grid Computing (PDGC), pp. 190–195',
@@ -1066,7 +1072,10 @@ const PUBS = [
     au:'*H. Verma*, N. Chauhan, L. K. Awasthi', ve:'<em>Cluster Computing</em>, Springer', tags:['Under review','SCI','Q1'] },
 
   { type:'review', year:2023, title:'A non-cooperative game theoretic congestion alleviation strategy for patient-centric IoHT',
-    au:'*H. Verma*, N. Chauhan, L. K. Awasthi', ve:'<em>International Journal of Communication Systems</em>, Wiley', tags:['Under review','SCI','Q2','IF 2.1'] }
+    au:'*H. Verma*, N. Chauhan, L. K. Awasthi', ve:'<em>International Journal of Communication Systems</em>, Wiley', tags:['Under review','SCI','Q2','IF 2.1'] },
+
+  // >>> SCHOLAR-ADDED: generated by scripts/scholar_apply.py; edits here are overwritten
+  // <<< SCHOLAR-ADDED
 ];
 
 const GROUPS = [
@@ -1127,6 +1136,21 @@ function render(){
   countEl.textContent = rows.length + (rows.length === 1 ? ' record' : ' records');
   [...filtEl.children].forEach(b => b.setAttribute('aria-pressed', String(b.dataset.k === active)));
 }
+
+/* The summary sentence above the list is counted from PUBS, so it stays right
+   when the weekly Google Scholar sync adds a paper. */
+(function(){
+  const n = (f) => PUBS.filter(f).length;
+  const tag = (p, t) => (p.tags||[]).some(x => x.toUpperCase().startsWith(t));
+  const set = (id, k, one, many) => { document.getElementById(id).textContent = k + ' ' + (k === 1 ? one : many); };
+  set('n-pub',    n(p => p.type !== 'review'), 'published item', 'published items');
+  set('n-jour',   n(p => p.type === 'journal'), 'journal article', 'journal articles');
+  set('n-sci',    n(p => p.type === 'journal' && tag(p, 'SCI')), 'SCI-indexed', 'SCI-indexed');
+  set('n-chap',   n(p => p.type === 'chapter'), 'book chapter', 'book chapters');
+  set('n-conf',   n(p => p.type === 'conference'), 'conference paper', 'conference papers');
+  set('n-scopus', n(p => p.type === 'conference' && tag(p, 'SCOPUS')), 'Scopus-indexed', 'Scopus-indexed');
+  set('n-rev',    n(p => p.type === 'review'), 'journal manuscript', 'journal manuscripts');
+})();
 
 filtEl.innerHTML = GROUPS.map(g => {
   const n = g.key === 'all' ? PUBS.length : PUBS.filter(p => p.type === g.key).length;
