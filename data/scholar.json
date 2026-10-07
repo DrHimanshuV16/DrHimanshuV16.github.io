@@ -1,0 +1,402 @@
+{
+  "profile": "https://scholar.google.com/citations?user=MD55-F8AAAAJ&hl=en",
+  "name": "Dr. Himanshu Verma",
+  "fetched": "2026-10-07",
+  "citations": 296,
+  "citations_since": 253,
+  "h_index": 7,
+  "h_index_since": 7,
+  "i10_index": 5,
+  "i10_index_since": 5,
+  "publications": [
+    {
+      "id": "MD55-F8AAAAJ:TFP_iSt0sucC",
+      "title": "Ai-driven personalized shopping assistance for customized retail experiences",
+      "authors": "D Sehgal, C Khurana, H Verma, R Mohana",
+      "venue_line": "Intelligent Systems Using Semiconductors for Robotics and IoT, 375-381",
+      "citations": 2,
+      "year": 2026,
+      "fields": {
+        "Authors": "Deepanshu Sehgal, Charvi Khurana, Himanshu Verma, Rajni Mohana",
+        "Publication date": "2026",
+        "Book": "Intelligent Systems Using Semiconductors for Robotics and IoT",
+        "Pages": "375-381",
+        "Publisher": "CRC Press"
+      },
+      "link": "https://api.taylorfrancis.com/content/chapters/edit/download?identifierName=doi&identifierValue=10.1201/9781003716389-59&type=chapterpdf"
+    },
+    {
+      "id": "MD55-F8AAAAJ:bEWYMUwI8FkC",
+      "title": "Exploring the Efficacy of Machine Learning Models in Predicting Heart Disease: A Comparative Study",
+      "authors": "C Gulati, A Chaudhary, H Verma, R Mohana",
+      "venue_line": "Intelligent Systems Using Semiconductors for Robotics and IoT, 328-333",
+      "citations": 1,
+      "year": 2026,
+      "fields": {
+        "Authors": "Chirag Gulati, Arav Chaudhary, Himanshu Verma, Rajni Mohana",
+        "Publication date": "2026",
+        "Book": "Intelligent Systems Using Semiconductors for Robotics and IoT",
+        "Pages": "328-333",
+        "Publisher": "CRC Press"
+      },
+      "link": "https://api.taylorfrancis.com/content/chapters/edit/download?identifierName=doi&identifierValue=10.1201/9781003716389-51&type=chapterpdf"
+    },
+    {
+      "id": "MD55-F8AAAAJ:isC4tDSrTZIC",
+      "title": "Optimizing Telecom Churn Forecasting Using XGBoost and LightGBM with Data Balancing and Feature Refinement",
+      "authors": "S Tiwari, L Gupta, H Verma",
+      "venue_line": "International Conference on Next-Generation Networks and Deployable …",
+      "citations": 0,
+      "year": 2025,
+      "fields": {
+        "Authors": "Shreya Tiwari, Lakshya Gupta, Himanshu Verma",
+        "Publication date": "2025/9/18",
+        "Book": "International Conference on Next-Generation Networks and Deployable Artificial Intelligence",
+        "Pages": "302-315",
+        "Publisher": "Springer Nature Switzerland"
+      },
+      "link": "https://link.springer.com/chapter/10.1007/978-3-032-15398-2_23"
+    },
+    {
+      "id": "MD55-F8AAAAJ:r0BpntZqJG4C",
+      "title": "Internet of Things for e-health",
+      "authors": "H Verma",
+      "venue_line": "Blockchain and Digital Twin for Smart Healthcare, 161-178",
+      "citations": 1,
+      "year": 2025,
+      "fields": {
+        "Authors": "Himanshu Verma",
+        "Publication date": "2025/1/1",
+        "Book": "Blockchain and Digital Twin for Smart Healthcare",
+        "Pages": "161-178",
+        "Publisher": "Elsevier"
+      },
+      "link": "https://www.sciencedirect.com/science/chapter/edited-volume/pii/B9780443303005000117"
+    },
+    {
+      "id": "MD55-F8AAAAJ:iH-uZ7U-co4C",
+      "title": "Comparative Analysis of Machine Learning Models for the Detection of Diabetic Retinopathy: A Performance Evaluation",
+      "authors": "Y Singh, K Kaur, H Verma, R Mohana",
+      "venue_line": "2024 Eighth International Conference on Parallel, Distributed and Grid …",
+      "citations": 0,
+      "year": 2024,
+      "fields": {
+        "Authors": "Yuvraj Singh, Kulreen Kaur, Himanshu Verma, Rajni Mohana",
+        "Publication date": "2024/12/18",
+        "Conference": "2024 Eighth International Conference on Parallel, Distributed and Grid Computing (PDGC)",
+        "Pages": "190-195",
+        "Publisher": "IEEE"
+      },
+      "link": "https://ieeexplore.ieee.org/abstract/document/10983955/"
+    },
+    {
+      "id": "MD55-F8AAAAJ:IWHjjKOFINEC",
+      "title": "Enhanced hybrid congestion mitigation strategy for ‘6lowpan-rpl based patient-centric ioht’",
+      "authors": "H Verma, N Chauhan, LK Awasthi",
+      "venue_line": "Computer Networks 255, 110862",
+      "citations": 2,
+      "year": 2024,
+      "fields": {
+        "Authors": "Himanshu Verma, Naveen Chauhan, Lalit Kumar Awasthi",
+        "Publication date": "2024/12/1",
+        "Journal": "Computer Networks",
+        "Volume": "255",
+        "Pages": "110862",
+        "Publisher": "Elsevier"
+      },
+      "link": "https://www.sciencedirect.com/science/article/pii/S1389128624006947"
+    },
+    {
+      "id": "MD55-F8AAAAJ:mVmsd5A6BfQC",
+      "title": "Reduced lead ECG multi-label classification with higher generalization using 2D SEResnets with self attention",
+      "authors": "D Sheikh, H Verma, N Chauhan",
+      "venue_line": "Multimedia Tools and Applications 83 (24), 65315-65339",
+      "citations": 5,
+      "year": 2024,
+      "fields": {
+        "Authors": "Danish Sheikh, Himanshu Verma, Naveen Chauhan",
+        "Publication date": "2024/7",
+        "Journal": "Multimedia Tools and Applications",
+        "Volume": "83",
+        "Issue": "24",
+        "Pages": "65315-65339",
+        "Publisher": "Springer US"
+      },
+      "link": "https://link.springer.com/article/10.1007/s11042-024-18116-z"
+    },
+    {
+      "id": "MD55-F8AAAAJ:qUcmZB5y_30C",
+      "title": "Emergency communication architecture for catastrophic events: a hybrid approach",
+      "authors": "H Verma, Y Kumar, C Bhatt, H Singh, T Agrawal, N Kumari",
+      "venue_line": "2024 OPJU International Technology Conference (OTCON) on Smart Computing for …",
+      "citations": 3,
+      "year": 2024,
+      "fields": {
+        "Authors": "Himanshu Verma, Yogendra Kumar, Chandradeep Bhatt, Harvinder Singh, Tarun Agrawal, Namrata Kumari",
+        "Publication date": "2024/6/5",
+        "Conference": "2024 OPJU International Technology Conference (OTCON) on Smart Computing for Innovation and Advancement in Industry 4.0",
+        "Pages": "1-6",
+        "Publisher": "IEEE"
+      },
+      "link": "https://ieeexplore.ieee.org/abstract/document/10687787/"
+    },
+    {
+      "id": "MD55-F8AAAAJ:dhFuZR0502QC",
+      "title": "Flutter technology-based hyper-local e-commerce marketing application",
+      "authors": "A Tomar, A Shukla, BP Singh, VK Gupta, R Mohana, H Verma",
+      "venue_line": "2024 5th International Conference for Emerging Technology (INCET), 1-6",
+      "citations": 5,
+      "year": 2024,
+      "fields": {
+        "Authors": "Ankit Tomar, Anurag Shukla, Brijendra Pratap Singh, Vishan Kumar Gupta, Rajini Mohana, Himanshu Verma",
+        "Publication date": "2024/5/24",
+        "Conference": "2024 5th International Conference for Emerging Technology (INCET)",
+        "Pages": "1-6",
+        "Publisher": "IEEE"
+      },
+      "link": "https://ieeexplore.ieee.org/abstract/document/10593582/"
+    },
+    {
+      "id": "MD55-F8AAAAJ:9ZlFYXVOiuMC",
+      "title": "Realtime Atrial Fibrillation Detection System For IoMT Using Hybrid Machine Learning Classification",
+      "authors": "AR Vansh, H Verma, N Chauhan",
+      "venue_line": "2023 International Conference on Communication, Security and Artificial …",
+      "citations": 1,
+      "year": 2023,
+      "fields": {
+        "Authors": "Akshat Raj Vansh, Himanshu Verma, Naveen Chauhan",
+        "Publication date": "2023/11/23",
+        "Conference": "2023 International Conference on Communication, Security and Artificial Intelligence (ICCSAI)",
+        "Pages": "70-75",
+        "Publisher": "IEEE"
+      },
+      "link": "https://ieeexplore.ieee.org/abstract/document/10421349/"
+    },
+    {
+      "id": "MD55-F8AAAAJ:QIV2ME_5wuYC",
+      "title": "An Enhanced Cooperative Localization Strategy for Emergency-WSN",
+      "authors": "H Verma, N Kumari, T Agrawal, Y Kumar",
+      "venue_line": "2023 Seventh International Conference on Image Information Processing (ICIIP …",
+      "citations": 0,
+      "year": 2023,
+      "fields": {
+        "Authors": "Himanshu Verma, Namrata Kumari, Tarun Agrawal, Yogendra Kumar",
+        "Publication date": "2023/11/22",
+        "Conference": "2023 Seventh International Conference on Image Information Processing (ICIIP)",
+        "Pages": "789-793",
+        "Publisher": "IEEE"
+      },
+      "link": "https://ieeexplore.ieee.org/abstract/document/10537633/"
+    },
+    {
+      "id": "MD55-F8AAAAJ:4DMP91E08xMC",
+      "title": "A Comprehensive review of ‘Internet of Healthcare Things’: Networking aspects, technologies, services, applications, challenges, and security concerns",
+      "authors": "H Verma, N Chauhan, LK Awasthi",
+      "venue_line": "Computer Science Review 50, 100591",
+      "citations": 101,
+      "year": 2023,
+      "fields": {
+        "Authors": "Himanshu Verma, Naveen Chauhan, Lalit Kumar Awasthi",
+        "Publication date": "2023/11/1",
+        "Source": "Computer Science Review",
+        "Volume": "50",
+        "Pages": "100591",
+        "Publisher": "Elsevier"
+      },
+      "link": "https://www.sciencedirect.com/science/article/pii/S1574013723000588"
+    },
+    {
+      "id": "MD55-F8AAAAJ:M3ejUd6NZC8C",
+      "title": "Task offloading using queuing theory in fog-assisted iomt",
+      "authors": "N Kumar, H Verma, N Chauhan, LK Awasthi",
+      "venue_line": "Information and Communication Technology for Competitive Strategies (ICTCS …",
+      "citations": 1,
+      "year": 2023,
+      "fields": {
+        "Authors": "Nitish Kumar, Himanshu Verma, Naveen Chauhan, Lalit Kumar Awasthi",
+        "Publication date": "2023/5/16",
+        "Book": "Information and Communication Technology for Competitive Strategies (ICTCS 2022) Intelligent Strategies for ICT",
+        "Pages": "637-647",
+        "Publisher": "Springer Nature Singapore"
+      },
+      "link": "https://link.springer.com/chapter/10.1007/978-981-19-9304-6_57"
+    },
+    {
+      "id": "MD55-F8AAAAJ:7PzlFSSx8tAC",
+      "title": "Performance Evaluation of 6LoWPAN-basedPC-IoHT’under Malicious Activities",
+      "authors": "H Verma, N Chauhan, LK Awasthi, A Kumar, BJ Choi",
+      "venue_line": "Preprints",
+      "citations": 0,
+      "year": 2023,
+      "fields": {
+        "Authors": "Himanshu Verma, Naveen Chauhan, Lalit Kumar Awasthi, Ajit Kumar, Bong Jun Choi",
+        "Publication date": "2023/5/8",
+        "Publisher": "Preprints"
+      },
+      "link": "https://www.preprints.org/frontend/manuscript/fafa4c51dd5d79c358168c6ec85394d3/download_pub"
+    },
+    {
+      "id": "MD55-F8AAAAJ:YOwf2qJgpHMC",
+      "title": "Modelling Buffer-Overflow in 6LoWPAN-Based Resource-Constraint IoT-Healthcare Network: H. Verma et al.",
+      "authors": "H Verma, N Chauhan, LK Awasthi",
+      "venue_line": "Wireless Personal Communications 129 (2), 1113-1128",
+      "citations": 10,
+      "year": 2023,
+      "fields": {
+        "Authors": "Himanshu Verma, Naveen Chauhan, Lalit Kumar Awasthi",
+        "Publication date": "2023/3",
+        "Journal": "Wireless Personal Communications",
+        "Volume": "129",
+        "Issue": "2",
+        "Pages": "1113-1128",
+        "Publisher": "Springer US"
+      },
+      "link": "https://link.springer.com/article/10.1007/s11277-023-10178-w"
+    },
+    {
+      "id": "MD55-F8AAAAJ:qxL8FJ1GzNcC",
+      "title": "Flood Forecasting for Himachal region using Machine Learning based classification",
+      "authors": "B Lauhny, H Verma, N Chauhan, LK Awasthi",
+      "venue_line": "2023 IEEE 3rd International Conference on Technology, Engineering …",
+      "citations": 0,
+      "year": 2023,
+      "fields": {
+        "Authors": "Bimalkant Lauhny, Himanshu Verma, Naveen Chauhan, Lalit Kumar Awasthi",
+        "Publication date": "2023/2/10",
+        "Conference": "2023 IEEE 3rd International Conference on Technology, Engineering, Management for Societal impact using Marketing, Entrepreneurship and Talent (TEMSMET)",
+        "Pages": "1-8",
+        "Publisher": "IEEE"
+      },
+      "link": "https://ieeexplore.ieee.org/abstract/document/10149966/"
+    },
+    {
+      "id": "MD55-F8AAAAJ:4TOpqqG69KYC",
+      "title": "Ddos attacks detection in ‘internet of medical things’ using machine learning techniques",
+      "authors": "NT Bhutia, H Verma, N Chauhan, LK Awasthi",
+      "venue_line": "2022 IEEE conference on interdisciplinary approaches in technology and …",
+      "citations": 9,
+      "year": 2022,
+      "fields": {
+        "Authors": "Nima Tshering Bhutia, Himanshu Verma, Naveen Chauhan, Lalit Kumar Awasthi",
+        "Publication date": "2022/12/21",
+        "Conference": "2022 IEEE conference on interdisciplinary approaches in technology and management for social innovation (IATMSI)",
+        "Pages": "1-6",
+        "Publisher": "IEEE"
+      },
+      "link": "https://ieeexplore.ieee.org/abstract/document/10119428/"
+    },
+    {
+      "id": "MD55-F8AAAAJ:MXK_kJrjxJIC",
+      "title": "Solid Waste Management using Equal Sized Clustering and Capacitated Vehicle Routing Problem",
+      "authors": "S Singh, H Verma, N Chauhan, LK Awasthi",
+      "venue_line": "2022 IEEE 6th Conference on Information and Communication Technology (CICT), 1-5",
+      "citations": 1,
+      "year": 2022,
+      "fields": {
+        "Authors": "Sarbjit Singh, Himanshu Verma, Naveen Chauhan, Lalit Kumar Awasthi",
+        "Publication date": "2022/11/18",
+        "Conference": "2022 IEEE 6th Conference on Information and Communication Technology (CICT)",
+        "Pages": "1-5",
+        "Publisher": "IEEE"
+      },
+      "link": "https://ieeexplore.ieee.org/abstract/document/9997928/"
+    },
+    {
+      "id": "MD55-F8AAAAJ:YsMSGLbcyi4C",
+      "title": "Buffer-loss estimation to address congestion in 6LoWPAN based resource-restricted ‘Internet of Healthcare Things’ network",
+      "authors": "H Verma, N Chauhan, N Chand, LK Awasthi",
+      "venue_line": "Computer Communications 181, 236-256",
+      "citations": 21,
+      "year": 2022,
+      "fields": {
+        "Authors": "Himanshu Verma, Naveen Chauhan, Narottam Chand, Lalit Kumar Awasthi",
+        "Publication date": "2022/1/1",
+        "Journal": "Computer Communications",
+        "Volume": "181",
+        "Pages": "236-256",
+        "Publisher": "Elsevier"
+      },
+      "link": "https://www.sciencedirect.com/science/article/pii/S0140366421003947"
+    },
+    {
+      "id": "MD55-F8AAAAJ:5nxA0vEk-isC",
+      "title": "An ecg heartbeat classification strategy using deep learning for automated cardiocare application",
+      "authors": "D Sheikh, AR Vansh, H Verma, N Chauhan, R Kumar, R Sharma, ...",
+      "venue_line": "2021 3rd International conference on advances in computing, communication …",
+      "citations": 7,
+      "year": 2021,
+      "fields": {
+        "Authors": "Danish Sheikh, Akshat Raj Vansh, Himanshu Verma, Naveen Chauhan, Rajeev Kumar, Rajesh Sharma, PC Negi, Lalit Kumar Awasthi",
+        "Publication date": "2021/12/17",
+        "Conference": "2021 3rd International conference on advances in computing, communication control and networking (ICAC3N)",
+        "Pages": "515-520",
+        "Publisher": "IEEE"
+      },
+      "link": "https://ieeexplore.ieee.org/abstract/document/9725503/"
+    },
+    {
+      "id": "MD55-F8AAAAJ:ZeXyd9-uunAC",
+      "title": "A systematic review on firefly algorithm: past, present, and future. TechRxiv",
+      "authors": "H Verma",
+      "venue_line": "Preprint. https://doi. org/10.36227/techrxiv 12122748, v1",
+      "citations": 3,
+      "year": 2020,
+      "fields": {
+        "Authors": "H Verma",
+        "Publication date": "2020",
+        "Journal": "Preprint. https://doi. org/10.36227/techrxiv",
+        "Volume": "12122748",
+        "Pages": "v1"
+      },
+      "link": "https://scholar.google.com/scholar?cluster=15579541762943711688&hl=en&oi=scholarr"
+    },
+    {
+      "id": "MD55-F8AAAAJ:IjCSPb-OGe4C",
+      "title": "A deep learning for brain tumor MRI images semantic segmentation using FCN",
+      "authors": "S Kumar, A Negi, JN Singh, H Verma",
+      "venue_line": "2018 4th International Conference on Computing Communication and Automation …",
+      "citations": 63,
+      "year": 2018,
+      "fields": {
+        "Authors": "Sanjay Kumar, Ashish Negi, JN Singh, Himanshu Verma",
+        "Publication date": "2018/12/14",
+        "Conference": "2018 4th International Conference on Computing Communication and Automation (ICCCA)",
+        "Pages": "1-4",
+        "Publisher": "IEEE"
+      },
+      "link": "https://ieeexplore.ieee.org/abstract/document/8777675/"
+    },
+    {
+      "id": "MD55-F8AAAAJ:9yKSN-GCB0IC",
+      "title": "Hybrid cellular-Manet based communication Architecture for natural disasters",
+      "authors": "H Verma, N Chauhan",
+      "venue_line": "MMU Journal of Management & Technology 1 (1)",
+      "citations": 1,
+      "year": 2016,
+      "fields": {
+        "Authors": "Himanshu Verma, Naveen Chauhan",
+        "Publication date": "2016",
+        "Journal": "MMU Journal of Management & Technology",
+        "Volume": "1",
+        "Issue": "1"
+      },
+      "link": "https://scholar.google.com/scholar?cluster=5082947762506958175&hl=en&oi=scholarr"
+    },
+    {
+      "id": "MD55-F8AAAAJ:d1gkVwhDpl0C",
+      "title": "MANET based emergency communication system for natural disasters",
+      "authors": "H Verma, N Chauhan",
+      "venue_line": "International Conference on Computing, Communication & Automation, 480-485",
+      "citations": 59,
+      "year": 2015,
+      "fields": {
+        "Authors": "Himanshu Verma, Naveen Chauhan",
+        "Publication date": "2015/5/15",
+        "Conference": "International Conference on Computing, Communication & Automation",
+        "Pages": "480-485",
+        "Publisher": "IEEE"
+      },
+      "link": "https://ieeexplore.ieee.org/abstract/document/7148424/"
+    }
+  ]
+}
