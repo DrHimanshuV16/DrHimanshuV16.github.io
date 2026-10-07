@@ -1,12 +1,17 @@
 name: Google Scholar sync
 
+# Every Monday, read the Google Scholar profile and update the citations,
+# h-index and publication list on the page. Can also be run by hand from
+# the Actions tab (Google Scholar sync → Run workflow).
 on:
-  push:
-    branches: [scholar-sync]
+  schedule:
+    - cron: '30 2 * * 1'   # Monday 02:30 UTC (08:00 IST)
   workflow_dispatch:
 
 permissions:
   contents: write
+
+concurrency: scholar-sync
 
 jobs:
   sync:
@@ -18,10 +23,12 @@ jobs:
           python-version: '3.12'
       - name: Read Google Scholar
         run: python scripts/scholar_fetch.py
+      - name: Update the page
+        run: python scripts/scholar_apply.py
       - name: Commit changes
         run: |
-          git config user.name "scholar-sync[bot]"
+          git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/scholar.json
-          git diff --cached --quiet || git commit -m "Refresh Google Scholar data"
+          git add data/scholar.json index.html
+          git diff --cached --quiet || git commit -m "Weekly Google Scholar sync"
           git push

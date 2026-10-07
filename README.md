@@ -89,9 +89,21 @@ the filter counts and the list update themselves.
 `review` always sort to the bottom of the list and carry an amber "under review" chip;
 move one to its real type and year when it is accepted.
 
-**Updating the metrics.** The six figures (h-index, citations, cumulative impact
-factor, and so on) are plain numbers in the `<div class="metrics">` block — search for
-`class="metrics"`. Worth refreshing from Google Scholar once or twice a year.
+**Weekly Google Scholar sync.** Every Monday the *Google Scholar sync* workflow
+(`.github/workflows/scholar-sync.yml`) reads the
+[Scholar profile](https://scholar.google.com/citations?user=MD55-F8AAAAJ&hl=en),
+updates the h-index, Citations and Publications figures and the footer date, and adds
+any paper not yet on the page between the `SCHOLAR-ADDED` markers at the end of `PUBS`,
+sorted into journal, conference or book chapter from its venue. Preprints and patents
+are left out. Hand-written entries are never touched, so to add tags or tidy an
+auto-added paper, move it above the markers. Run it any time from the repository's
+**Actions** tab → *Google Scholar sync* → **Run workflow**; the run log lists anything it
+could not place. Because the workflow commits to `main`, press **Sync** in VS Code
+before editing your local copy.
+
+**Updating the other metrics.** Cumulative impact factor, design patents and years of
+experience are plain numbers in the `<div class="metrics">` block — search for
+`class="metrics"`.
 
 **Changing the photo.** Encode a new image as a data URI and replace the long
 `src="data:image/jpeg;base64,..."` string on the `<img>` inside `<figure class="portrait">`.
