@@ -5,16 +5,26 @@ Standard library only, so the GitHub workflow needs no installs. Scholar has
 no API; this reads the public profile page and each paper's detail page, with
 pauses in between so it stays a polite, low-volume reader.
 
-Exits non-zero (and leaves the old JSON untouched) if Scholar answers with a
-CAPTCHA or an unexpected page, so a blocked run never wipes good data.
+Scholar also turns away automated readers from shared cloud addresses, so being
+refused is a normal outcome rather than a breakage. A CAPTCHA or an HTTP
+429/403 is retried with a growing pause; if Scholar is still refusing, this
+exits BLOCKED (75) and leaves the old JSON untouched, and the workflow treats
+that as "nothing to do this week" instead of a failure. A page that is neither
+a CAPTCHA nor the expected layout exits 1, because that means the scraper
+itself needs updating.
 """
 import html
 import json
 import re
 import sys
 import time
+import urllib.error
 import urllib.request
 from pathlib import Path
+
+BLOCKED = 75          # EX_TEMPFAIL: Scholar turned us away; try again next run
+ATTEMPTS = 3
+BACKOFF = (60, 180)   # seconds to wait before retries 2 and 3
 
 USER = 'MD55-F8AAAAJ'
 BASE = 'https://scholar.google.com'
@@ -23,13 +33,36 @@ UA = ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
       '(KHTML, like Gecko) Chrome/126.0 Safari/537.36')
 
 
-def get(url):
+class TurnedAway(Exception):
+    """Scholar served a CAPTCHA or throttled the request."""
+
+
+def fetch_once(url):
     req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept-Language': 'en-US,en;q=0.9'})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        body = r.read().decode('utf-8', 'replace')
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            body = r.read().decode('utf-8', 'replace')
+    except urllib.error.HTTPError as e:
+        if e.code in (403, 429, 503):
+            raise TurnedAway(f'Scholar answered HTTP {e.code}') from None
+        raise
     if 'gs_captcha' in body or 'unusual traffic' in body or 'id="recaptcha"' in body:
-        sys.exit('Scholar returned a CAPTCHA page; leaving data unchanged.')
+        raise TurnedAway('Scholar served a CAPTCHA page')
     return body
+
+
+def get(url):
+    for attempt in range(1, ATTEMPTS + 1):
+        try:
+            return fetch_once(url)
+        except TurnedAway as e:
+            if attempt == ATTEMPTS:
+                print(f'{e}. Still refused after {ATTEMPTS} attempts; leaving data unchanged.',
+                      file=sys.stderr)
+                sys.exit(BLOCKED)
+            wait = BACKOFF[attempt - 1]
+            print(f'{e}. Waiting {wait}s before attempt {attempt + 1} of {ATTEMPTS}.', file=sys.stderr)
+            time.sleep(wait)
 
 
 def text(s):

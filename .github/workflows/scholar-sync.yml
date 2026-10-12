@@ -3,6 +3,12 @@ name: Google Scholar sync
 # Every Monday, read the Google Scholar profile and update the citations,
 # h-index and publication list on the page. Can also be run by hand from
 # the Actions tab (Google Scholar sync → Run workflow).
+#
+# Scholar has no API and turns away automated readers from shared cloud
+# addresses, so some runs will be refused. That is expected, not a fault:
+# the fetch retries, then reports "turned away", the page keeps the figures
+# from the last good run, and the job ends green. Only a genuine breakage —
+# a layout Scholar changed under us, or a bug here — fails the run.
 on:
   schedule:
     - cron: '30 2 * * 1'   # Monday 02:30 UTC (08:00 IST)
@@ -17,15 +23,31 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
+
       - name: Read Google Scholar
-        run: python scripts/scholar_fetch.py
+        id: fetch
+        run: |
+          set +e
+          python scripts/scholar_fetch.py
+          code=$?
+          set -e
+          if [ "$code" -eq 75 ]; then
+            echo "turned_away=true" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Scholar sync skipped::Google Scholar turned the request away. The page keeps the figures from the last good run; the next scheduled run will try again."
+            exit 0
+          fi
+          exit "$code"
+
       - name: Update the page
+        if: steps.fetch.outputs.turned_away != 'true'
         run: python scripts/scholar_apply.py
+
       - name: Commit changes
+        if: steps.fetch.outputs.turned_away != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
