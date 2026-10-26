@@ -1,9 +1,9 @@
 {
   "profile": "https://scholar.google.com/citations?user=MD55-F8AAAAJ&hl=en",
   "name": "Dr. Himanshu Verma",
-  "fetched": "2026-10-12",
-  "citations": 298,
-  "citations_since": 255,
+  "fetched": "2026-10-26",
+  "citations": 304,
+  "citations_since": 261,
   "h_index": 7,
   "h_index_since": 7,
   "i10_index": 5,
@@ -193,7 +193,7 @@
       "title": "A Comprehensive review of ‘Internet of Healthcare Things’: Networking aspects, technologies, services, applications, challenges, and security concerns",
       "authors": "H Verma, N Chauhan, LK Awasthi",
       "venue_line": "Computer Science Review 50, 100591",
-      "citations": 101,
+      "citations": 107,
       "year": 2023,
       "fields": {
         "Authors": "Himanshu Verma, Naveen Chauhan, Lalit Kumar Awasthi",
@@ -306,7 +306,7 @@
       "title": "Buffer-loss estimation to address congestion in 6LoWPAN based resource-restricted ‘Internet of Healthcare Things’ network",
       "authors": "H Verma, N Chauhan, N Chand, LK Awasthi",
       "venue_line": "Computer Communications 181, 236-256",
-      "citations": 21,
+      "citations": 22,
       "year": 2022,
       "fields": {
         "Authors": "Himanshu Verma, Naveen Chauhan, Narottam Chand, Lalit Kumar Awasthi",
@@ -323,7 +323,7 @@
       "title": "An ecg heartbeat classification strategy using deep learning for automated cardiocare application",
       "authors": "D Sheikh, AR Vansh, H Verma, N Chauhan, R Kumar, R Sharma, ...",
       "venue_line": "2021 3rd International conference on advances in computing, communication …",
-      "citations": 7,
+      "citations": 8,
       "year": 2021,
       "fields": {
         "Authors": "Danish Sheikh, Akshat Raj Vansh, Himanshu Verma, Naveen Chauhan, Rajeev Kumar, Rajesh Sharma, PC Negi, Lalit Kumar Awasthi",
