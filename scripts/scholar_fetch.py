@@ -12,13 +12,20 @@ exits BLOCKED (75) and leaves the old JSON untouched, and the workflow treats
 that as "nothing to do this week" instead of a failure. A page that is neither
 a CAPTCHA nor the expected layout exits 1, because that means the scraper
 itself needs updating.
+
+Optional: with a SerpApi key in the SERPAPI_KEY environment variable (a GitHub
+secret of that name), the same data is read through SerpApi's Google Scholar
+Author API instead, which Scholar does not turn away. Its free plan covers this
+comfortably: about one read a week, plus one per newly added paper.
 """
 import html
 import json
+import os
 import re
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -113,8 +120,71 @@ def details(pid):
     return {'fields': fields, 'link': html.unescape(link.group(1)) if link else None}
 
 
+SERPAPI = 'https://serpapi.com/search.json'
+SERPAPI_KEY = os.environ.get('SERPAPI_KEY', '').strip()
+# SerpApi's citation keys, mapped to the field names Scholar's own page uses,
+# so scholar_apply.py reads data from either source the same way.
+SERPAPI_FIELDS = {'authors': 'Authors', 'publication_date': 'Publication date',
+                  'journal': 'Journal', 'conference': 'Conference', 'book': 'Book',
+                  'source': 'Source', 'volume': 'Volume', 'issue': 'Issue',
+                  'pages': 'Pages', 'publisher': 'Publisher'}
+
+
+def serpapi(**params):
+    url = SERPAPI + '?' + urllib.parse.urlencode(
+        {'engine': 'google_scholar_author', 'hl': 'en', 'api_key': SERPAPI_KEY, **params})
+    try:
+        with urllib.request.urlopen(url, timeout=60) as r:
+            data = json.loads(r.read().decode('utf-8'))
+    except urllib.error.HTTPError as e:
+        data = {'error': f'HTTP {e.code}: ' + e.read().decode('utf-8', 'replace')[:300]}
+    if data.get('error'):
+        sys.exit(f'SerpApi refused the request ({data["error"]}); leaving data unchanged.')
+    return data
+
+
+def profile_serpapi():
+    pubs, start, first = [], 0, None
+    while True:
+        page = serpapi(author_id=USER, num=100, start=start, sort='pubdate')
+        first = first or page
+        rows = page.get('articles', [])
+        for a in rows:
+            year = str(a.get('year') or '')
+            pubs.append({
+                'id': a['citation_id'],
+                'title': a.get('title', ''),
+                'authors': a.get('authors', ''),
+                'venue_line': re.sub(r',\s*' + re.escape(year) + r'$', '', a.get('publication', '')) if year else a.get('publication', ''),
+                'citations': int((a.get('cited_by') or {}).get('value') or 0),
+                'year': int(year) if year.isdigit() else None,
+            })
+        if len(rows) < 100:
+            break
+        start += 100
+    table = {}
+    for row in (first.get('cited_by') or {}).get('table', []):
+        for k, v in row.items():
+            since = next((n for key, n in v.items() if key.startswith('since')), 0)
+            table[k] = (v.get('all', 0), since)
+    if not first.get('author') or not {'citations', 'h_index', 'i10_index'} <= table.keys():
+        sys.exit('SerpApi answer did not have the expected layout; leaving data unchanged.')
+    stats = [*table['citations'], *table['h_index'], *table['i10_index']]
+    return first['author'].get('name', ''), stats, pubs
+
+
+def details_serpapi(pid):
+    c = serpapi(view_op='view_citation', citation_id=pid).get('citation', {})
+    fields = {SERPAPI_FIELDS[k]: str(v) for k, v in c.items() if k in SERPAPI_FIELDS and v}
+    return {'fields': fields, 'link': c.get('link')}
+
+
 def main():
-    name, s, pubs = profile()
+    if SERPAPI_KEY:
+        print('Reading Scholar through SerpApi.')
+        name, s, pubs = profile_serpapi()
+    else:
+        name, s, pubs = profile()
     old = {}
     if OUT.exists():
         old = {p['id']: p for p in json.loads(OUT.read_text()).get('publications', [])}
@@ -123,8 +193,11 @@ def main():
         if p['id'] in old and old[p['id']].get('fields'):
             p['fields'], p['link'] = old[p['id']]['fields'], old[p['id']].get('link')
             continue
-        time.sleep(5)
-        p.update(details(p['id']))
+        if SERPAPI_KEY:
+            p.update(details_serpapi(p['id']))
+        else:
+            time.sleep(5)
+            p.update(details(p['id']))
     data = {
         'profile': f'{BASE}/citations?user={USER}&hl=en',
         'name': name,
