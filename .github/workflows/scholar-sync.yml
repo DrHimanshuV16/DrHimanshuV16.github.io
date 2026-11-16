@@ -1,17 +1,21 @@
 name: Google Scholar sync
 
-# Every Monday, read the Google Scholar profile and update the citations,
-# h-index and publication list on the page. Can also be run by hand from
-# the Actions tab (Google Scholar sync → Run workflow).
+# Keeps the citations, h-index and publication list on the page in step with
+# Google Scholar, once a week. Can also be run by hand from the Actions tab
+# (Google Scholar sync → Run workflow).
 #
-# Scholar has no API and turns away automated readers from shared cloud
-# addresses, so some runs will be refused. That is expected, not a fault:
-# the fetch retries, then reports "turned away", the page keeps the figures
-# from the last good run, and the job ends green. Only a genuine breakage —
-# a layout Scholar changed under us, or a bug here — fails the run.
+# Scholar has no API and turns most automated readers on shared cloud
+# addresses away, so a single weekly attempt usually came back empty (four of
+# the six Mondays after the sync went live). Instead this tries twice a day,
+# each run on a fresh runner and address, and stops trying for the week as
+# soon as one read gets through: a scheduled run whose data is under six days
+# old ends straight away without contacting Scholar. A refused run retries,
+# then reports "turned away", keeps the last good figures and ends green. Only
+# a genuine breakage, such as a layout Scholar changed under us, fails the run.
 on:
   schedule:
-    - cron: '30 2 * * 1'   # Monday 02:30 UTC (08:00 IST)
+    - cron: '30 2 * * *'    # daily 02:30 UTC (08:00 IST)
+    - cron: '30 14 * * *'   # daily 14:30 UTC (20:00 IST)
   workflow_dispatch:
 
 permissions:
@@ -28,8 +32,20 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Check whether this week's figures are already in
+        id: fresh
+        if: github.event_name == 'schedule'
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, datetime
+          last = datetime.date.fromisoformat(json.load(open('data/scholar.json'))['fetched'])
+          age = (datetime.date.today() - last).days
+          print('skip=true' if age < 6 else 'skip=false')
+          PY
+
       - name: Read Google Scholar
         id: fetch
+        if: steps.fresh.outputs.skip != 'true'
         run: |
           set +e
           python scripts/scholar_fetch.py
@@ -37,17 +53,17 @@ jobs:
           set -e
           if [ "$code" -eq 75 ]; then
             echo "turned_away=true" >> "$GITHUB_OUTPUT"
-            echo "::notice title=Scholar sync skipped::Google Scholar turned the request away. The page keeps the figures from the last good run; the next scheduled run will try again."
+            echo "::notice title=Scholar sync skipped::Google Scholar turned the request away. The page keeps the figures from the last good run; the next scheduled run, later today or tomorrow, will try again."
             exit 0
           fi
           exit "$code"
 
       - name: Update the page
-        if: steps.fetch.outputs.turned_away != 'true'
+        if: steps.fresh.outputs.skip != 'true' && steps.fetch.outputs.turned_away != 'true'
         run: python scripts/scholar_apply.py
 
       - name: Commit changes
-        if: steps.fetch.outputs.turned_away != 'true'
+        if: steps.fresh.outputs.skip != 'true' && steps.fetch.outputs.turned_away != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
