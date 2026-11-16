@@ -46,6 +46,10 @@ jobs:
       - name: Read Google Scholar
         id: fetch
         if: steps.fresh.outputs.skip != 'true'
+        env:
+          # Optional. With this repository secret set, the read goes through
+          # SerpApi, which Scholar does not turn away. See README.md.
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
         run: |
           set +e
           python scripts/scholar_fetch.py

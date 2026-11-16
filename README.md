@@ -100,7 +100,14 @@ auto-added paper, move it above the markers. Run it any time from the repository
 **Actions** tab → *Google Scholar sync* → **Run workflow**; the run log lists anything it
 could not place. Scholar turns many automated reads away, so the workflow tries twice a
 day and stops for the week once one read succeeds; a run marked *Scholar sync skipped*
-was turned away and changed nothing. Because the workflow commits to `main`, press **Sync** in VS Code
+was turned away and changed nothing.
+
+*Making it dependable.* Scholar never turns away reads made through
+[SerpApi](https://serpapi.com), and its free plan covers this site several times over.
+To switch: sign up at serpapi.com, copy the API key from your SerpApi dashboard, then in
+this repository open **Settings → Secrets and variables → Actions → New repository
+secret**, name it `SERPAPI_KEY` and paste the key. The next run uses it; nothing else
+changes. Delete the secret to go back to reading Scholar directly. Because the workflow commits to `main`, press **Sync** in VS Code
 before editing your local copy.
 
 **Updating the other metrics.** Cumulative impact factor, design patents and years of
